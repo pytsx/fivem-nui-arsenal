@@ -45,7 +45,6 @@ export const CardWrapperStyled = styled.div`
     position: relative;
     display: flex;
     flex-direction: row;
-    transform: skew(-6deg);
 `
 
 export const CardContainerStyled = styled.div`
@@ -91,7 +90,7 @@ export const CardOptionsWrapper = styled.div`
 interface ICardOptionsContainerStyled {
   position?: string
   display?: string
-  hover?: boolean
+  isActive?: boolean
 }
 
 
@@ -101,30 +100,32 @@ export const CardOptionsContainerStyled = styled.ul<ICardOptionsContainerStyled>
     position: absolute;
     transition: all 300ms ease-in-out;
     left: ${props =>
-    props.position == 'left' && !props.hover
+    props.position == 'left' && !props.isActive
       ? '7rem'
-      : props.position == 'left' && props.hover
+      : props.position == 'left' && props.isActive
         ? '1rem'
-        : props.hover
+        : props.isActive
           ? '-1rem'
           : '-7rem'
   };
     border-radius: ${props => props.position == 'left' ? '.32rem 0 0 .32rem' : '0 .32rem .32rem 0'};
     padding: ${props => props.position == 'left' ? '.32rem .32rem .32rem .08rem ' : '.32rem .08rem .32rem .32rem'};
-    display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
     direction: ${props => props.position == 'left' ? 'rtl' : 'ltr'};
     display: ${props => props.display}
 `
+interface ICardOptionStyled {
+  isActive?: boolean
+}
 
 export const CardOptionStyled = styled.li`
+
     width: 100%;
-    min-height: 5rem;
+    height: 5rem;
     backdrop-filter: blur(10px);
     background: #1d1d1d0f;
-
     cursor: pointer;
     border-radius: .32rem;
     list-style: none;
@@ -133,7 +134,11 @@ export const CardOptionStyled = styled.li`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
+
+    &:hover {
+      background: red;
+    }
 `
 
 

@@ -3,6 +3,8 @@ import { LayoutContainer } from "./Components/Layout"
 export const App = () => {
 
   return (
-    <LayoutContainer />
+    <div style={{ height: '100vh', width: '100vw' }}>
+      <LayoutContainer />
+    </div>
   )
 }
